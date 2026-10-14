@@ -24,12 +24,17 @@
         </div>
       </div>
       <div id="pc-tabs" class="pc-tabs d-none">
-        <div id="tab-current" class="pc-tab active">
-          Current Preference
+        <div class="pc-tab-group">
+          <div id="tab-current" class="pc-tab active">
+            Current Preference
+          </div>
+          <div id="tab-history" class="pc-tab">
+            Preference History
+          </div>
         </div>
-        <div id="tab-history" class="pc-tab">
-          Preference History
-        </div>
+      <div id="downloadHistoryBtn" class="download-history-link hidden">
+      <i class="ri-download-2-line"></i> Download Current Preference
+      </div>
       </div>
 
       <div class="header-container">
@@ -71,15 +76,19 @@
 <script>
   window.consentWidgetConfig = {
     preferenceFormId: "43ab94f4-72b3-4a5f-bf82-366f7caf076c",
-    preferenceDetailsApiUrl:"https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/preference/v1/export/getPreferenceDetails",
-    preferenceHistoryApiUrl:"https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/preference/v1/export/auditSearch/scroll",
-    submitApiUrl:"https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/preference/v1/createOrUpdateConsent",
-    signatureServiceUrl: "https://starhealth.pre-dataprivacy.com/cpm-sign",
+    preferenceFormName: "Preference Campaign",
+    apiDomain: "https://xyztech.pre-dataprivacy.com",
+    preferenceDetailsApiUrl:"https://xyztech.pre-dataprivacy.com/cpm-api/open-api/v1/preference/v1/export/getPreferenceDetails",
+    preferenceHistoryApiUrl:"https://xyztech.pre-dataprivacy.com/cpm-api/open-api/v1/preference/v1/export/auditSearch/scroll",
+    downloadHistoryPdfApiUrl:"https://xyztech.pre-dataprivacy.com/cpm-api/open-api/v1/preference/v1/export/downloadPreferenceHistoryPdf",
+    submitApiUrl:"https://xyztech.pre-dataprivacy.com/cpm-api/open-api/v1/preference/v1/createOrUpdateConsent",
+    signatureServiceUrl: "https://xyztech.pre-dataprivacy.com/cpm-sign",
     userToken: "Bearer bearer",
     customAttributes: {
       "ticketID": "",
       "registration ID": "",
-      "name": ""
+      "name": "",
+      "Test_3.1.5 release": ""
     },
     showButtons: true,
     showLanguageDropdown: true,
@@ -108,10 +117,9 @@
         // SRI (Subresource Integrity) ensures script hasn't been tampered with
         // crossOrigin required for SRI validation
         script.crossOrigin = 'anonymous';
-        script.integrity = "sha384-oNm+LwGMLcT2c/RuclPBfrv1eVn0bxzSjQZU1h4imnP911oSYLeC4D8VRHLfMk/M";
+        script.integrity = "sha384-Ukf6PTNQxRLiGaUlJk+VV7QHAGA3apiYqim8WN6whffHTNDya8cUk82p9ST9aehS";
         script.onload = function() {
           window.scriptLoaded = true;
-          console.log("script.js loaded");
         };
         document.body.appendChild(script);
       }
@@ -148,8 +156,6 @@
 
     const result = await window.consentWidget.submit();
 
-    console.log("Submit result:", result);
-
     if (result.success) {
       // navigate next page here
       // window.location.href = "/next-page";
@@ -165,7 +171,7 @@
 
 </script>
 <!--comment below line in case of Android integration -->
-<script src="./script.js" integrity="sha384-oNm+LwGMLcT2c/RuclPBfrv1eVn0bxzSjQZU1h4imnP911oSYLeC4D8VRHLfMk/M" crossorigin="anonymous"></script>
+<script src="./script.js" integrity="sha384-Ukf6PTNQxRLiGaUlJk+VV7QHAGA3apiYqim8WN6whffHTNDya8cUk82p9ST9aehS" crossorigin="anonymous"></script>
   </body>
 </html>
    

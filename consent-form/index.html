@@ -35,10 +35,11 @@
     // Configuration options for the consent widget
     window.consentWidgetConfig = {
       consentFormId: "5c67e4d8-32e1-4c63-8870-bd36084fbd71",
-      apiUrl: "https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/consent/v1/getConsentFormById",
-      submitApiUrl: "https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/consent/v1/createOrUpdateConsent",
+      apiDomain: "https://xyztech.pre-dataprivacy.com",
+      apiUrl: "https://xyztech.pre-dataprivacy.com/cpm-api/open-api/v1/consent/v1/getConsentFormById",
+      submitApiUrl: "https://xyztech.pre-dataprivacy.com/cpm-api/open-api/v1/consent/v1/createOrUpdateConsent",
       tenantToken: "Bearer bearer",
-      signatureServiceUrl: "https://starhealth.pre-dataprivacy.com/cpm-sign",
+      signatureServiceUrl: "https://xyztech.pre-dataprivacy.com/cpm-sign",
       dataPrincipalId: [
         {
           key: "email",
@@ -48,7 +49,8 @@
       customAttributes: {
         "ticketID": "",
         "registration ID": "",
-        "name": ""
+        "name": "",
+        "Test_3.1.5 release": ""
       },
       showButtons: true,
       showLanguageDropdown: true,
@@ -80,10 +82,9 @@
         // SRI (Subresource Integrity) ensures script hasn't been tampered with
         // crossOrigin required for SRI validation
         script.crossOrigin = 'anonymous';
-        script.integrity = "sha384-y5s8nwocYzQzIVByBuPGvznrJgIo6P/dLT3oxvQjJQ6dHSuXm9bMHoEq8vpicoF5";
+        script.integrity = "sha384-+D19eOxe7ix4v061w3No5XYWlKH1wPy9/Bloc//dVxhdXSc+sQPeFGlMjdVQzQ9c";
         script.onload = function() {
           window.scriptLoaded = true;
-          console.log("script.js loaded");
         };
         document.body.appendChild(script);
       }
@@ -119,8 +120,6 @@
 
     const result = await window.consentWidget.submit();
 
-    console.log("Submit result:", result);
-
     if (result.success) {
       // navigate next page here
       // window.location.href = "/next-page";
@@ -135,6 +134,6 @@
 </script>
 -->
 <!--comment below line in case of Android integration -->
-<script src="./script.js" integrity="sha384-y5s8nwocYzQzIVByBuPGvznrJgIo6P/dLT3oxvQjJQ6dHSuXm9bMHoEq8vpicoF5" crossorigin="anonymous"></script>
+<script src="./script.js" integrity="sha384-+D19eOxe7ix4v061w3No5XYWlKH1wPy9/Bloc//dVxhdXSc+sQPeFGlMjdVQzQ9c" crossorigin="anonymous"></script>
 </body>
 </html>
