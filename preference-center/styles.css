@@ -488,8 +488,9 @@ button:disabled {
   color: #606190;
   
 }
-.history-row *{
-  display: inline;
+.history-permission-content {
+  max-width: 100%;
+  overflow-x: auto;
 }
 .history-row .value{
   color:rgb(177, 61, 160) ;
@@ -514,14 +515,17 @@ button.loading {
 }
 
 /* Table styles */
-.permission-block table {
+.permission-block table,
+.history-permission-content table {
   border-collapse: collapse;
   width: 100%;
   margin: 8px 0;
 }
 
 .permission-block table td,
-.permission-block table th {
+.permission-block table th,
+.history-permission-content table td,
+.history-permission-content table th {
   border: 1px solid #000;
   padding: 8px;
   min-width: 50px;

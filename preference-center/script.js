@@ -1671,39 +1671,21 @@ const row = document.createElement("div");
   historyDto[timestamp].forEach(item => {
     const line = document.createElement("div");
     line.className = "history-row";
-const tempDiv = document.createElement("div");
-tempDiv.innerHTML = item.permission || "";
-
-const children = Array.from(tempDiv.children);
+const permissionContent = document.createElement("div");
+permissionContent.className = "history-permission-content";
+permissionContent.innerHTML = item.permission || "";
+line.appendChild(permissionContent);
 
 const optedText = item.optedFor?.length
   ? item.optedFor
       .map(opt => opt.charAt(0).toUpperCase() + opt.slice(1))
       .join(", ")
   : "No selection";
-
-if (children.length > 0) {
-  children.forEach((child, index) => {
-    const cloned = document.createElement(child.tagName.toLowerCase());
-    cloned.innerHTML = child.innerHTML;
-
-    cloned.style.display = "block";
-    cloned.style.margin = "2px 0";
-    cloned.style.lineHeight = "1.4";
-
-    if (child.getAttribute("style")) {
-      cloned.setAttribute("style", child.getAttribute("style"));
-    }
-
-    if (index === children.length - 1) {
-      cloned.innerHTML += ` : <span class="value">${optedText}</span>`;
-    }
-
-    line.appendChild(cloned);
-  });
-} else {
-  line.innerHTML = `${item.permission} : <span class="value">${optedText}</span>`;
-}
+const value = document.createElement("span");
+value.className = "value";
+value.textContent = optedText;
+line.append(" ");
+line.appendChild(value);
     row.appendChild(line);
   });
 
@@ -1711,9 +1693,6 @@ if (children.length > 0) {
   historyRoot.appendChild(record);
     });
 }
-
-
-
 
 document.getElementById("tab-current").addEventListener("click", switchToCurrent);
 document.getElementById("tab-history").addEventListener("click", switchToHistory);
@@ -1742,7 +1721,7 @@ async function downloadPreferenceHistory() {
       method: "POST",
       headers: authHeaders(),
       credentials: "include",
-      body: JSON.stringify(body)
+      body: JSON.stringify({ ...body, ...campaignLinkContext })
     });
 
     if (!res.ok) {
